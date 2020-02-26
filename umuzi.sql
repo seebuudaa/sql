@@ -16,7 +16,6 @@ CREATE TABLE "public"."customers" (
     CONSTRAINT "customers_pkey" PRIMARY KEY ("customerid")
 ) WITH (oids = false);
 
-TRUNCATE "customers";
 INSERT INTO "customers" ("customerid", "firstname", "lastname", "gender", "address", "phone", "email", "city", "country") VALUES
 (1,	'John',	'Hibert',	'Male',	'284 chaucer st',	84789657,	'john@gmail.com',	'Johannesburg',	'South Africa'),
 (2,	'Thando',	'Sithole',	'Female',	'240 Sect 1',	794445584,	'thando@gmail.com',	'Cape Town',	'South Africa'),
@@ -34,6 +33,10 @@ CREATE TABLE "public"."employeestable" (
     CONSTRAINT "employeestable_pkey" PRIMARY KEY ("employeeid")
 ) WITH (oids = false);
 
+INSERT INTO "employeestable" ("employeeid", "firstname", "lastname", "email", "jobtitle") VALUES
+(1,	'Kani',	'Matthew',	'mat@gmail.com',	'Manager'),
+(2,	'Lesly',	'Cronje',	'LesC@gmail.com',	'Clerk'),
+(3,	'Gideon',	'Maduku',	'm@gmail.com',	'Accountant');
 
 DROP TABLE IF EXISTS "orders";
 CREATE TABLE "public"."orders" (
@@ -43,8 +46,23 @@ CREATE TABLE "public"."orders" (
     "fulfilledbyemployeeid" integer,
     "daterequired" date,
     "dateshipped" date,
-    "status" character varying(20)
+    "status" character varying(255)
 ) WITH (oids = false);
 
+INSERT INTO "orders" ("orderid", "productid", "paymentid", "fulfilledbyemployeeid", "daterequired", "dateshipped", "status") VALUES
+(1,	1,	1,	2,	'2018-09-05',	NULL,	'Not shipped'),
+(2,	1,	2,	2,	'2018-09-04',	'2018-09-03',	'Shipped'),
+(3,	3,	3,	3,	'2018-09-06',	NULL,	'Not shipped');
 
--- 2020-02-26 09:46:17.577938+00
+DROP TABLE IF EXISTS "payments";
+CREATE TABLE "public"."payments" (
+    "customerid" integer,
+    "paymentid" integer,
+    "paymentdate" date,
+    "amount" numeric
+) WITH (oids = false);
+
+INSERT INTO "payments" ("customerid", "paymentid", "paymentdate", "amount") VALUES
+(1,	1,	'2018-01-09',	157.87);
+
+-- 2020-02-26 15:48:28.567799+00

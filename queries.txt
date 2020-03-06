@@ -1,0 +1,60 @@
+select * from customers; 
+
+select distinct firstname from customers;
+
+select firstname  from customers where customerid = 1;
+
+update customers
+set firstname = 'Lerato',
+lastname = 'Mabitso'
+where customerid = 1;
+
+delete from customers
+where customerid = 2;
+
+select status from orders;
+select count(status) from orders;
+
+select concat('R', max(amount)) as MAXIMUM from payments;
+
+select * from customers 
+order by country;
+
+select concat('R', buyprice) as "BETWEEN"
+from products 
+where buyprice 
+between 100 and 600;
+
+select * from customers 
+where city = 'Durban' 
+or city = 'Cape Town';
+
+select * from products where 
+buyprice > 500;
+
+select concat('R', sum(amount)) 
+as sum
+from payments;
+
+select count(status) from orders
+as COUNTER
+where status = 'Shipped';
+
+select concat('$', avg(buyprice)/12) 
+as average from products;
+
+select payments.customerid,
+customers.firstname,
+customers.lastname, 
+customers.gender,
+customers.address,
+customers.phone,
+customers.email,
+customers.city,
+customers.country,
+concat('R', payments.amount) as amount
+FROM customers
+INNER JOIN payments ON payments.CustomerID = Customers.CustomerID;
+
+select * from products
+where description like '%Turnable front wheels%';

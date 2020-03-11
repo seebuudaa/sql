@@ -1,49 +1,49 @@
-select * from customers; 
+SELECT * FROM customers; 
 
-select distinct firstname from customers;
+SELECT DISTINCT firstname FROM customers;
 
-select firstname  from customers where customerid = 1;
+SELECT firstname  FROM customers WHERE customerid = 1;
 
 update customers
-set firstname = 'Lerato',
+SET firstname = 'Lerato',
 lastname = 'Mabitso'
-where customerid = 1;
+WHERE customerid = 1;
 
-delete from customers
-where customerid = 2;
+DELETE FROM customers
+WHERE customerid = 2;
 
-select status from orders;
-select count(status) from orders;
+SELECT status FROM orders;
+SELECT COUNT(status) FROM orders;
 
-select concat('R', max(amount)) as MAXIMUM from payments;
+SELECT CONCAT('R', max(amount)) as MAXIMUM FROM payments;
 
-select * from customers 
+SELECT * FROM customers 
 order by country;
 
-select concat('R', buyprice) as "BETWEEN"
-from products 
-where buyprice 
-between 100 and 600;
+SELECT CONCAT('R', buyprice) as "BETWEEN"
+FROM products 
+WHERE buyprice 
+BETWEEN 100 and 600;
 
-select * from customers 
-where city = 'Durban' 
+SELECT * FROM customers 
+WHERE city = 'Durban' 
 or city = 'Cape Town';
 
-select * from products where 
+SELECT * FROM products WHERE 
 buyprice > 500;
 
-select concat('R', sum(amount)) 
+SELECT CONCAT('R', sum(amount)) 
 as sum
-from payments;
+FROM payments;
 
-select count(status) from orders
+SELECT COUNT(status) FROM orders
 as COUNTER
-where status = 'Shipped';
+WHERE status = 'Shipped';
 
-select concat('$', avg(buyprice)/12) 
-as average from products;
+SELECT CONCAT('$', round(avg(buyprice)/12)) 
+as average FROM products;
 
-select payments.customerid,
+SELECT payments.customerid,
 customers.firstname,
 customers.lastname, 
 customers.gender,
@@ -52,9 +52,8 @@ customers.phone,
 customers.email,
 customers.city,
 customers.country,
-concat('R', payments.amount) as amount
-FROM customers
+CONCAT('R', payments.amount) as amount FROM customers
 INNER JOIN payments ON payments.CustomerID = Customers.CustomerID;
 
-select * from products
-where description like '%Turnable front wheels%';
+SELECT * FROM products
+WHERE description LIKE '%Turnable front wheels%';

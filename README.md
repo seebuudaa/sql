@@ -50,5 +50,5 @@ services:
     restart: always
     ports:
       - 8080:8080
-
+* <img src="images/picture1.png" width="200">
 ## Happy Coding

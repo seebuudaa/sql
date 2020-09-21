@@ -1,4 +1,4 @@
--- step 2
+-- step 2 from the project
 
 -- 1. SELECT all records from table Customers.
 SELECT * FROM customers; 
